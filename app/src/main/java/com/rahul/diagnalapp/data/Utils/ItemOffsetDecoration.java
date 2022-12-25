@@ -1,4 +1,4 @@
-package com.rahul.diagnalapp.Utils;
+package com.rahul.diagnalapp.data.Utils;
 
 import android.content.Context;
 import android.graphics.Rect;

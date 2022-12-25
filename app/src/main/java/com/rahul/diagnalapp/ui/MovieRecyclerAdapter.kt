@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rahul.diagnalapp.R
-import com.rahul.diagnalapp.Utils.DataChangeListener
+import com.rahul.diagnalapp.data.Utils.DataChangeListener
 import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.databinding.ItemVerticalLayoutBinding
 

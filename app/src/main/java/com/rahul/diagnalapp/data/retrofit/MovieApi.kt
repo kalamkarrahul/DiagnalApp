@@ -1,6 +1,6 @@
 package com.rahul.diagnalapp.data.retrofit
 
-import com.rahul.diagnalapp.Utils.Constants
+import com.rahul.diagnalapp.data.Utils.Constants
 import com.rahul.diagnalapp.data.models.MovieResponse
 import retrofit2.Response
 import retrofit2.http.GET

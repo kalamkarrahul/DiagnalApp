@@ -7,18 +7,17 @@ import android.text.TextUtils
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.rahul.diagnalapp.MovieApplication
 import com.rahul.diagnalapp.R
-import com.rahul.diagnalapp.Utils.DataChangeListener
-import com.rahul.diagnalapp.Utils.ItemOffsetDecoration
+import com.rahul.diagnalapp.data.Utils.DataChangeListener
+import com.rahul.diagnalapp.data.Utils.ItemOffsetDecoration
 import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.databinding.ActivityMainBinding
-import com.rahul.diagnalapp.viewModel.MainViewModel
-import com.rahul.diagnalapp.viewModel.MainViewModelFactory
+import com.rahul.diagnalapp.ui.viewModel.MainViewModel
+import com.rahul.diagnalapp.ui.viewModel.MainViewModelFactory
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), DataChangeListener {

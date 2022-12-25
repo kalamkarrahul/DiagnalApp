@@ -1,6 +1,6 @@
 package com.rahul.diagnalapp.di
 
-import com.rahul.diagnalapp.Utils.Constants
+import com.rahul.diagnalapp.data.Utils.Constants
 import com.rahul.diagnalapp.data.retrofit.MovieApi
 import dagger.Module
 import dagger.Provides

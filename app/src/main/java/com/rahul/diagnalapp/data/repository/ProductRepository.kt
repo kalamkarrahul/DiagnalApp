@@ -2,7 +2,7 @@ package com.rahul.diagnalapp.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rahul.diagnalapp.Utils.Constants
+import com.rahul.diagnalapp.data.Utils.Constants
 import com.rahul.diagnalapp.data.models.MovieResponse
 import com.rahul.diagnalapp.data.retrofit.MovieApi
 import javax.inject.Inject
