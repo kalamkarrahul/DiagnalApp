@@ -16,6 +16,8 @@ class HomeActivity : AppCompatActivity() {
         binding.buttonLocal.setOnClickListener {
             // load data from assests
             // json file
+            val intent = Intent(this, LocalActivity::class.java)
+            startActivity(intent)
         }
 
         binding.buttonNetwork.setOnClickListener {
