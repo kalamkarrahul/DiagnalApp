@@ -78,17 +78,31 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
-                    search(p0)
+                    if (p0.length > 2)
+                        search(p0)
+                    else
+                        setDefault()
                 }
                 return true
             }
 
             override fun onQueryTextChange(msg: String): Boolean {
-                search(msg)
+                if (msg.length > 2)
+                    search(msg)
+                else
+                    setDefault()
                 return true
             }
         })
         return true
+    }
+
+    private fun setDefault() {
+        binding.textViewNoMatch.visibility = View.GONE
+        binding.recyclerViewMovie.apply {
+            (adapter as MovieRecyclerAdapter).setList(movieList)
+            adapter?.notifyDataSetChanged()
+        }
     }
 
     private var matchedMovie: ArrayList<Movie> = arrayListOf()
@@ -96,10 +110,7 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
 
         binding.textViewNoMatch.visibility = View.GONE
         if (TextUtils.isEmpty(text)) {
-            binding.recyclerViewMovie.apply {
-                (adapter as MovieRecyclerAdapter).setList(movieList)
-                adapter?.notifyDataSetChanged()
-            }
+            setDefault()
             return
         }
         matchedMovie = arrayListOf()
