@@ -1,4 +1,4 @@
-package com.rahul.diagnalapp.ui
+package com.rahul.diagnalapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

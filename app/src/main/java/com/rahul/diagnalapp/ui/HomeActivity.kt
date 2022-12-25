@@ -25,5 +25,11 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.buttonPaging.setOnClickListener {
+            // load data from web service
+            val intent = Intent(this, PagingActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

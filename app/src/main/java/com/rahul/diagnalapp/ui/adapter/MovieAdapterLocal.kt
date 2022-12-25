@@ -1,4 +1,4 @@
-package com.rahul.diagnalapp.ui
+package com.rahul.diagnalapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rahul.diagnalapp.R
 import com.rahul.diagnalapp.data.Utils.DataChangeListener
-import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.data.models.local.Content
 import com.rahul.diagnalapp.databinding.ItemVerticalLayoutBinding
 

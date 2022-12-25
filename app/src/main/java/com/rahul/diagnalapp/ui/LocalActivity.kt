@@ -15,10 +15,10 @@ import com.google.gson.reflect.TypeToken
 import com.rahul.diagnalapp.R
 import com.rahul.diagnalapp.data.Utils.DataChangeListener
 import com.rahul.diagnalapp.data.Utils.ItemOffsetDecoration
-import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.data.models.local.Content
 import com.rahul.diagnalapp.data.models.local.LocalResponse
 import com.rahul.diagnalapp.databinding.ActivityLocalBinding
+import com.rahul.diagnalapp.ui.adapter.MovieAdapterLocal
 import java.io.IOException
 
 class LocalActivity : AppCompatActivity(), DataChangeListener {

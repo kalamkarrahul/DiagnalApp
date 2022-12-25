@@ -20,5 +20,10 @@
         android:layout_height="wrap_content"
         android:text="Load from Network" />
 
+    <Button
+        android:id="@+id/buttonPaging"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Load By Paging" />
 
 </LinearLayout>

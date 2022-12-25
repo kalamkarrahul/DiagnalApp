@@ -16,6 +16,7 @@ import com.rahul.diagnalapp.data.Utils.DataChangeListener
 import com.rahul.diagnalapp.data.Utils.ItemOffsetDecoration
 import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.databinding.ActivityMainBinding
+import com.rahul.diagnalapp.ui.adapter.MovieRecyclerAdapter
 import com.rahul.diagnalapp.ui.viewModel.MainViewModel
 import com.rahul.diagnalapp.ui.viewModel.MainViewModelFactory
 import javax.inject.Inject
