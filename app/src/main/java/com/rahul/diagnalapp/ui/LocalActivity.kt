@@ -2,15 +2,20 @@ package com.rahul.diagnalapp.ui
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.rahul.diagnalapp.R
 import com.rahul.diagnalapp.data.Utils.DataChangeListener
 import com.rahul.diagnalapp.data.Utils.ItemOffsetDecoration
+import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.data.models.local.Content
 import com.rahul.diagnalapp.data.models.local.LocalResponse
 import com.rahul.diagnalapp.databinding.ActivityLocalBinding
@@ -83,7 +88,76 @@ class LocalActivity : AppCompatActivity(), DataChangeListener {
         val localResponse = readJsonFile(pageNumber)
         movieList.addAll(localResponse.page.contentItems.content)
         adapter.setList(movieList)
-       // adapter.notifyDataSetChanged()
+        // adapter.notifyDataSetChanged()
         binding.recyclerViewMovie.post(Runnable { adapter.notifyDataSetChanged() })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.search_menu, menu)
+        val searchItem: MenuItem = menu.findItem(R.id.actionSearch)
+        val searchView: SearchView = searchItem.getActionView() as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                if (p0 != null) {
+                    if (p0.length > 2)
+                        search(p0)
+                    else
+                        setDefault()
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(msg: String): Boolean {
+                if (msg.length > 2)
+                    search(msg)
+                else
+                    setDefault()
+                return true
+            }
+        })
+        return true
+    }
+
+    private fun setDefault() {
+        binding.textViewNoMatch.visibility = View.GONE
+        binding.recyclerViewMovie.apply {
+            (adapter as MovieAdapterLocal).setList(movieList)
+            adapter?.notifyDataSetChanged()
+        }
+    }
+
+    private var matchedMovie: ArrayList<Content> = arrayListOf()
+    private fun search(text: String?) {
+
+        binding.textViewNoMatch.visibility = View.GONE
+        if (TextUtils.isEmpty(text)) {
+            setDefault()
+            return
+        }
+        matchedMovie = arrayListOf()
+
+        text?.let {
+            movieList.forEach { movie ->
+                if (movie.name.contains(text, true)) {
+                    matchedMovie.add(movie)
+                }
+            }
+            updateRecyclerView()
+            if (matchedMovie.isEmpty()) {
+                binding.textViewNoMatch.visibility = View.VISIBLE
+            } else {
+                binding.textViewNoMatch.visibility = View.GONE
+            }
+            updateRecyclerView()
+        }
+    }
+
+    private fun updateRecyclerView() {
+        binding.recyclerViewMovie.apply {
+            (adapter as MovieAdapterLocal).setList(matchedMovie)
+            adapter?.notifyDataSetChanged()
+        }
     }
 }
