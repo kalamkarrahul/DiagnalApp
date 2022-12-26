@@ -14,6 +14,7 @@ import com.rahul.diagnalapp.MovieApplication
 import com.rahul.diagnalapp.R
 import com.rahul.diagnalapp.data.Utils.DataChangeListener
 import com.rahul.diagnalapp.data.Utils.ItemOffsetDecoration
+import com.rahul.diagnalapp.data.Utils.LiveDataInternetConnections
 import com.rahul.diagnalapp.data.models.Movie
 import com.rahul.diagnalapp.databinding.ActivityMainBinding
 import com.rahul.diagnalapp.ui.adapter.MovieRecyclerAdapter
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
     lateinit var adapter: MovieRecyclerAdapter
     private var movieList = arrayListOf<Movie>()
     var pageNumber = 1
+
+    private lateinit var cld: LiveDataInternetConnections
 
     @Inject
     lateinit var viewModelFactory: MainViewModelFactory
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
 
         binding.recyclerViewMovie.adapter = adapter
 
-        viewModel.getMovieList(pageNumber)
+        fetchData()
 
         viewModel.movies.observe(this@MainActivity) {
             binding.progressDialog.visibility = View.GONE
@@ -65,11 +68,22 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
         }
     }
 
+    private fun fetchData() {
+        cld = LiveDataInternetConnections(application)
+        cld.observe(this) { isConnected ->
+            if (isConnected) {
+                viewModel.getMovieList(pageNumber)
+            } else {
+                binding.textViewNoMatch.text = "No internet connection!"
+            }
+        }
+    }
+
     override fun loadMore() {
         if (isDueToSearch)
             return
         pageNumber++
-        viewModel.getMovieList(pageNumber)
+        fetchData()
     }
 
     var isDueToSearch = false
