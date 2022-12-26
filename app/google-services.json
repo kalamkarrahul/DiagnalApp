@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "847299226967",
+    "project_id": "dignalapp",
+    "storage_bucket": "dignalapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847299226967:android:e4592cd02e64afbb27e212",
+        "android_client_info": {
+          "package_name": "com.rahul.diagnalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847299226967-ktd30ibd6qi62g4gpcfqigu1hq2t06ec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rahul.diagnalapp",
+            "certificate_hash": "13dc637f310c2be4bad06cbb1b10429f9388f35b"
+          }
+        },
+        {
+          "client_id": "847299226967-n382m992t25eel44bordlaqsf7ep5llj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPVFAqwxHmUDCkPenfUNDz2rX0YaEjcqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847299226967-n382m992t25eel44bordlaqsf7ep5llj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
