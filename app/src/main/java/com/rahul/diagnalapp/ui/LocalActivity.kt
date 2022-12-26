@@ -79,8 +79,11 @@ class LocalActivity : AppCompatActivity(), DataChangeListener {
         return fileName
     }
 
+    var isDueToSearch = false
     var pageNumber = 1
     override fun loadMore() {
+        if (isDueToSearch)
+            return
         pageNumber++
         if (pageNumber > 3)
             return
@@ -101,19 +104,25 @@ class LocalActivity : AppCompatActivity(), DataChangeListener {
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
+                    isDueToSearch = true
                     if (p0.length > 2)
                         search(p0)
-                    else
+                    else {
+                        isDueToSearch = false
                         setDefault()
+                    }
                 }
                 return true
             }
 
             override fun onQueryTextChange(msg: String): Boolean {
+                isDueToSearch = true
                 if (msg.length > 2)
                     search(msg)
-                else
+                else {
+                    isDueToSearch = false
                     setDefault()
+                }
                 return true
             }
         })

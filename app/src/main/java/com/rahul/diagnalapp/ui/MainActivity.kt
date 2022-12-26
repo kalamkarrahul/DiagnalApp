@@ -66,9 +66,13 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
     }
 
     override fun loadMore() {
+        if (isDueToSearch)
+            return
         pageNumber++
         viewModel.getMovieList(pageNumber)
     }
+
+    var isDueToSearch = false
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
@@ -79,19 +83,25 @@ class MainActivity : AppCompatActivity(), DataChangeListener {
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 if (p0 != null) {
+                    isDueToSearch = true
                     if (p0.length > 2)
                         search(p0)
-                    else
+                    else {
+                        isDueToSearch = false
                         setDefault()
+                    }
                 }
                 return true
             }
 
             override fun onQueryTextChange(msg: String): Boolean {
+                isDueToSearch = true
                 if (msg.length > 2)
                     search(msg)
-                else
+                else {
+                    isDueToSearch = false
                     setDefault()
+                }
                 return true
             }
         })

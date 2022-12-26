@@ -41,7 +41,7 @@ class MovieAdapterLocal(val dataChangeListener: DataChangeListener) :
                         "poster8.jpg" -> R.drawable.poster8
                         "poster9.jpg" -> R.drawable.poster9
                         else -> {
-                            R.drawable.placeholder_for_missing_posters
+                            R.drawable.ic_baseline_broken_image_24
                         }
                     }
                 )
